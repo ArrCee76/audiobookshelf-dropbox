@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 set -e
 
 echo "Setting up rclone for Dropbox..."
@@ -16,8 +16,6 @@ EOF
 echo "Mounting Dropbox..."
 
 # Mount Dropbox in the background
-# --allow-other allows Audiobookshelf to access the mount
-# --vfs-cache-mode writes enables better performance
 rclone mount dropbox:${DROPBOX_AUDIOBOOKS_PATH} /dropbox \
   --allow-other \
   --vfs-cache-mode writes \
@@ -26,7 +24,7 @@ rclone mount dropbox:${DROPBOX_AUDIOBOOKS_PATH} /dropbox \
   --poll-interval 15s \
   --log-level INFO &
 
-# Wait a few seconds for mount to be ready
+# Wait for mount to be ready
 echo "Waiting for Dropbox mount..."
 sleep 5
 
@@ -41,5 +39,5 @@ fi
 
 echo "Starting Audiobookshelf..."
 
-# Start Audiobookshelf (original entrypoint)
+# Start Audiobookshelf
 exec node /app/index.js
