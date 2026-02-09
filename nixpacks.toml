@@ -1,0 +1,8 @@
+{
+  "providers": ["..."],
+  "phases": {
+    "setup": {
+      "nixPkgs": ["fuse"]
+    }
+  }
+}

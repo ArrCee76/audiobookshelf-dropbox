@@ -1,0 +1,13 @@
+# Environment files
+.env
+.env.local
+
+# Railway
+.railway
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
