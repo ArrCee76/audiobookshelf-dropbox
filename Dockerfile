@@ -1,10 +1,7 @@
 FROM ghcr.io/advplyr/audiobookshelf:latest
 
-# Install rclone and fuse for mounting
-RUN apt-get update && \
-    apt-get install -y rclone fuse && \
-    apt-get clean && \
-    rm -rf /var/lib/apt/lists/*
+# Install rclone and fuse for mounting (Alpine Linux uses apk, not apt-get)
+RUN apk add --no-cache rclone fuse
 
 # Create mount point for Dropbox
 RUN mkdir -p /dropbox
